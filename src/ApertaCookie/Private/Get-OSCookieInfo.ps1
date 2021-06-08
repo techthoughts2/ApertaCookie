@@ -87,7 +87,7 @@ function Get-OSCookieInfo {
                 $tableName = 'cookies'
             }
             FireFox {
-                $profilePath = Get-FireFoxProfilePath -Path "$env:HOME/Library/Application Support/Firefox/Profiles/"
+                $profilePath = Get-FireFoxProfilePath -Path "$env:HOME/Library/Application Support/Firefox/Profiles"
                 if ($profilePath) {
                     $sqlPath = "$profilePath/cookies.sqlite"
                     $tableName = 'moz_cookies'

@@ -18,7 +18,7 @@ InModuleScope $ModuleName {
             $ErrorActionPreference = 'SilentlyContinue'
         } #beforeAll
         Context 'Success' {
-            Context 'Windows' {
+            Context 'Windows' -Skip:(!$IsWindows) {
                 It 'should return expected results for Chrome' {
                     $eval = Get-OSCookieInfo -Browser 'Chrome'
                     $eval.SQLitePath | Should -BeExactly "$env:LOCALAPPDATA\Google\Chrome\User Data\Default\Cookies"
