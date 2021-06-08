@@ -85,7 +85,7 @@ Enter-Build {
     $script:BuildModuleRootFile = Join-Path -Path $script:ArtifactsPath -ChildPath "$($script:ModuleName).psm1"
 
     # Ensure our builds fail until if below a minimum defined code test coverage threshold
-    $script:coverageThreshold = 66
+    $script:coverageThreshold = 53
 
     [version]$script:PesterVersion = '5.0.0'
 }#Enter-Build
