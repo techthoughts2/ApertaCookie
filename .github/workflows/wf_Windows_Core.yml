@@ -3,7 +3,7 @@
 # https://help.github.com/en/actions/automating-your-workflow-with-github-actions/software-installed-on-github-hosted-runners
 # https://help.github.com/en/actions/automating-your-workflow-with-github-actions/workflow-syntax-for-github-actions#using-a-specific-shell
 # https://help.github.com/en/actions/automating-your-workflow-with-github-actions/workflow-syntax-for-github-actions
-name: ActionsTest-Windows-pwsh-Build
+name: ApertaCookie-Windows-pwsh-Build
 on: [push, pull_request]
 jobs:
   test:

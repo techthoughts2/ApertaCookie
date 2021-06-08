@@ -7,7 +7,7 @@
 [license-badge]:   https://img.shields.io/github/license/techthoughts2/ApertaCookie
 
 Branch | Windows | Linux | MacOS
---- | --- | --- | --- | --- |
+--- | --- | --- | --- |
 main | ![Build Status Windows Main](https://github.com/techthoughts2/ApertaCookie/workflows/ApertaCookie-Windows-pwsh/badge.svg?branch=main) | ![Build Status Linux Main](https://github.com/techthoughts2/ApertaCookie/workflows/ApertaCookie-Linux/badge.svg?branch=main) | ![Build Status MacOS Main](https://github.com/techthoughts2/ApertaCookie/workflows/ApertaCookie-MacOS/badge.svg?branch=main)
 Enhancements | ![Build Status Windows Enhancements](https://github.com/techthoughts2/ApertaCookie/workflows/ApertaCookie-Windows-pwsh/badge.svg?branch=Enhancements) | ![Build Status Linux Enhancements](https://github.com/techthoughts2/ApertaCookie/workflows/ApertaCookie-Linux/badge.svg?branch=Enhancements) | ![Build Status MacOS Enhancements](https://github.com/techthoughts2/ApertaCookie/workflows/Catesta-MacOS/badge.svg?branch=Enhancements)
 
