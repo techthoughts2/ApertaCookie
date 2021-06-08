@@ -71,7 +71,7 @@ InModuleScope $ModuleName {
                 } #it
                 It 'should return expected results for FireFox' {
                     Mock -CommandName Get-FireFoxProfilePath -MockWith {
-                        'home/Library/Application Support/Firefox/Profiles/'
+                        'home/Library/Application Support/Firefox/Profiles'
                     } #endMock
                     $eval = Get-OSCookieInfo -Browser 'FireFox' -Verbose
                     $eval.SQLitePath | Should -BeExactly 'home/Library/Application Support/Firefox/Profiles/cookies.sqlite'
