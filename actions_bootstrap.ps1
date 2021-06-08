@@ -29,8 +29,11 @@ $null = $modulesToInstall.Add(([PSCustomObject]@{
             ModuleName    = 'platyPS'
             ModuleVersion = '0.12.0'
         }))
-
-
+# https://github.com/RamblingCookieMonster/PSSQLite
+$null = $modulesToInstall.Add(([PSCustomObject]@{
+            ModuleName    = 'PSSQLite'
+            ModuleVersion = '1.1.0'
+        }))
 
 'Installing PowerShell Modules'
 foreach ($module in $modulesToInstall) {
