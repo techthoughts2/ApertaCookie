@@ -24,6 +24,12 @@ InModuleScope $ModuleName {
                     TableName  = 'cookies'
                 }
             } #endMock
+            Mock -CommandName Remove-Item -MockWith {
+                $null
+            } #endMock
+            Mock -CommandName Copy-CookieDBToTemp -MockWith {
+                'C:\test\copytest\b\cookies.sqlite'
+            } #endMock
         } #beforeEach
         Context 'Error' {
             It 'should return null of the cookie path can not be determined' {
@@ -50,6 +56,12 @@ InModuleScope $ModuleName {
                     throw 'Fake Error'
                 } #endMock
                 { Get-RawCookiesFromDB -Browser 'FireFox' } | Should -Throw
+            } #it
+            It 'should return null if the sqlite db can not be copied successfully' {
+                Mock -CommandName Copy-CookieDBToTemp -MockWith {
+                    $false
+                } #endMock
+                Get-RawCookiesFromDB -Browser 'Edge' | Should -BeNullOrEmpty
             } #it
         } #context_Error
         # Context 'Success' {

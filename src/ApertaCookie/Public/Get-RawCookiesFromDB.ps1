@@ -49,6 +49,17 @@ function Get-RawCookiesFromDB {
     $sqlPath = $osCookieInfo.SQLitePath
     $tableName = $osCookieInfo.TableName
 
+    $copySQLPath = Copy-CookieDBToTemp -SQLitePath $sqlPath
+
+    Write-Verbose -Message 'Copying sqlite db to temp location for query...'
+    if ($copySQLPath -eq $false) {
+        Write-Warning 'OS Cookie database could not be copied for query!'
+        return
+    }
+    else {
+        Write-Verbose -Message 'Copy completed.'
+    }
+
     if ($DomainName) {
         switch ($Browser) {
             FireFox {
@@ -64,11 +75,15 @@ function Get-RawCookiesFromDB {
         $query = "SELECT `"_rowid_`",* FROM `"main`".`"$tableName`" '\' LIMIT 0, 49999;"
     }
 
-    Write-Verbose -Message ('Establishing SQLite connection to: {0}' -f $sqlPath)
+    Write-Verbose -Message ('Establishing SQLite connection to: {0}' -f $copySQLPath)
     try {
-        $cookiesSQL = New-SQLiteConnection -DataSource $sqlPath -ErrorAction 'Stop'
+        $cookiesSQL = New-SQLiteConnection -DataSource $copySQLPath -ErrorAction 'Stop'
     }
     catch {
+        if ($copySQLPath -ne $false) {
+            Write-Verbose -Message 'Attempting sqlite db copy cleanup...'
+            Remove-Item -Path $copySQLPath -Confirm:$false -Force -ErrorAction 'SilentlyContinue'
+        }
         throw $_
     }
 
@@ -87,11 +102,19 @@ function Get-RawCookiesFromDB {
         $cookies = Invoke-SqliteQuery @sqlSplat
     }
     catch {
+        if ($copySQLPath -ne $false) {
+            Write-Verbose -Message 'Attempting sqlite db copy cleanup...'
+            Remove-Item -Path $copySQLPath -Confirm:$false -Force -ErrorAction 'SilentlyContinue'
+        }
         throw $_
     }
     finally {
         $cookiesSQL.Close()
         $cookiesSQL.Dispose()
+        if ($copySQLPath -ne $false) {
+            Write-Verbose -Message 'Attempting sqlite db copy cleanup...'
+            Remove-Item -Path $copySQLPath -Confirm:$false -Force -ErrorAction 'SilentlyContinue'
+        }
     }
 
     Write-Verbose -Message 'Cookies retrieved from SQLite'

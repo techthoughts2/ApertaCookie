@@ -2,7 +2,7 @@
 Module Name: ApertaCookie
 Module Guid: 3cdec6f3-9545-4077-8068-6af12f14fde1
 Download Help Link: NA
-Help Version: 0.3.0
+Help Version: 0.4.0
 Locale: en-US
 ---
 
