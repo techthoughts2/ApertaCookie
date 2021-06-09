@@ -79,6 +79,7 @@ $session = Get-DecryptedCookiesInfo -Browser Firefox -DomainName twitter -WebSes
 Convert-CookieTime -CookieTime 13267233550477440
 # for firefox cookies specify the firefox switch
 Convert-CookieTime -CookieTime 1616989552356002 -FirefoxTime
+#------------------------------------------------------------------------------------------------
 ```
 
 ## Author
