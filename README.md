@@ -13,13 +13,13 @@ Enhancements | [![ApertaCookie-Windows-pwsh-Build-Enhancements](https://github.c
 
 ## Synopsis
 
-TBD
-
-![ApertaCookie Gif Demo](media/ApertaCookie.gif "ApertaCookie in action")
+ApertaCookie is a PowerShell module that can extract and decrypt cookie data from the SQLite files of several popular browsers.
 
 ## Description
 
-TBD
+ApertaCookie enables you quickly extract the cookies from a browser's SQLite database using PowerShell.
+
+Edge, Chrome, and Firefox are currently supported across Windows, Linux, and MacOS for retrieving raw cookie information. With the exception of Firefox, cookie values are encrypted. Cookie value decryption is currently supported on Windows OS.
 
 [ApertaCookie](docs/ApertaCookie.md) provides the following functions:
 
@@ -27,9 +27,21 @@ TBD
 * [Get-DecryptedCookiesInfo](docs/Get-DecryptedCookiesInfo.md)
 * [Get-RawCookiesFromDB](docs/Get-RawCookiesFromDB.md)
 
+### Cross-platform Cookie Decryption Support
+
+ApertaCookie aims to be a fully cross-platform module. For Firefox, it currently is. Unfortunately, while you can still pull raw cookie information on Linux and MacOS, cookie value decryption is not currently possible. See the issues tab if you have experience with PBKDF2 and .NET Core ```System.Security.Cryptography``` to see how you can improve ApertaCookie!
+
+OS | Edge | Chrome | Firefox
+:------------ | :-------------| :-------------| :-------------
+Windows | :white_check_mark: |  :white_check_mark: | :heavy_check_mark: *no decrypt  required*
+Linux | :x: |  :x: | :heavy_check_mark: *no decrypt  required*
+MacOS | :x: |  :x: | :heavy_check_mark: *no decrypt  required*
+
+
+
 ## Why
 
-TBD
+Using PowerShell you can now quickly query the cookies database of several browsers. You can also quickly load desired cookies into a websession for a variety of use cases.
 
 ## Installation
 
@@ -48,12 +60,25 @@ Install-Module -Name "ApertaCookie" -Scope CurrentUser
 
 ```powershell
 #------------------------------------------------------------------------------------------------
-#import the ApertaCookie module
+# import the ApertaCookie module
 Import-Module -Name "ApertaCookie"
 #------------------------------------------------------------------------------------------------
-# tbd
-
+# get raw cookie information from chrome - cookie values are encrypted
+$allChromeCookies = Get-RawCookiesFromDB -Browser Chrome
 #------------------------------------------------------------------------------------------------
+# get decrypted cookie information from edge
+$edgeCookies = Get-DecryptedCookiesInfo -Browser Edge
+#------------------------------------------------------------------------------------------------
+# get decrypted cookie information from chrome for a specific domain
+$edgeCookies = Get-DecryptedCookiesInfo -Browser Edge -Domain facebook
+#------------------------------------------------------------------------------------------------
+# get decrypted cookie infromation from firefox for the twitter domain and load into a web session
+$session = Get-DecryptedCookiesInfo -Browser Firefox -DomainName twitter -WebSession
+#------------------------------------------------------------------------------------------------
+# get information about various cookie time values
+Convert-CookieTime -CookieTime 13267233550477440
+# for firefox cookies specify the firefox switch
+Convert-CookieTime -CookieTime 1616989552356002 -FirefoxTime
 ```
 
 ## Author
