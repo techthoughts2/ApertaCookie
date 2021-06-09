@@ -16,7 +16,7 @@ InModuleScope $ModuleName {
         BeforeAll {
             $WarningPreference = 'SilentlyContinue'
             $ErrorActionPreference = 'SilentlyContinue'
-            $sqlLitePath = 'pathto\cookies.sqlite'
+            $sqlitePath = 'pathto\cookies.sqlite'
         } #beforeAll
         Context 'Error' {
             It 'should return false if the temp dir can not be created' {
@@ -26,7 +26,7 @@ InModuleScope $ModuleName {
                 Mock -CommandName New-Item -MockWith {
                     throw 'Fake Error'
                 } #endMock
-                Copy-CookieDBToTemp -SQLitePath $sqlLitePath | Should -BeExactly $false
+                Copy-CookieDBToTemp -SQLitePath $sqlitePath | Should -BeExactly $false
             } #it
             It 'should return false if the sqlite db can not be copied' {
                 Mock -CommandName Test-Path -MockWith {
@@ -38,7 +38,7 @@ InModuleScope $ModuleName {
                 Mock -CommandName Copy-Item -MockWith {
                     throw 'Fake Error'
                 } #endMock
-                Copy-CookieDBToTemp -SQLitePath $sqlLitePath | Should -BeExactly $false
+                Copy-CookieDBToTemp -SQLitePath $sqlitePath | Should -BeExactly $false
             } #it
         } #context_Error
         Context 'Success' {
@@ -78,11 +78,9 @@ InModuleScope $ModuleName {
                 } #endMock
             } #beforeEach
             It 'should return false if the sqlite db can not be copied' {
-                $eval = Copy-CookieDBToTemp -SQLitePath $sqlLitePath
+                $eval = Copy-CookieDBToTemp -SQLitePath $sqlitePath
                 $eval | Should -BeExactly 'C:\test\copytest\b\cookies.sqlite'
             } #it
         } #context_Success
-    }#describe_PrivateFunctions
+    } #describe_PrivateFunctions
 }
-
-

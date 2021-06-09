@@ -6,11 +6,11 @@
 .EXAMPLE
     Get-RawCookiesFromDB -Browser Edge
 
-    Returns all cookies in the Edge SQLLite database
+    Returns all cookies in the Edge SQLite database
 .EXAMPLE
     Get-RawCookiesFromDB -Browser Edge -Domain 'twitter'
 
-    Returns all cookies in the Edge SQLLite database that are like domain twitter
+    Returns all cookies in the Edge SQLite database that are like domain twitter
 .PARAMETER Browser
     Browser choice
 .PARAMETER DomainName

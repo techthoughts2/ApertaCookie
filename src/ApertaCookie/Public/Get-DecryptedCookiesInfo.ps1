@@ -14,10 +14,10 @@
 .EXAMPLE
     $session = Get-DecryptedCookiesInfo -Browser Chrome -WebSession -Domain twitter
 
-    Cookies found in the Chrome cookie database that match twitter are loaded into a WebSession and returned for use.
+    Cookies found in the Chrome cookie database that match twitter are decrypted and loaded into a WebSession and returned for use.
 .EXAMPLE
     $session = Get-DecryptedCookiesInfo -Browser FireFox -WebSession -Domain facebook
-    $response = Invoke-WebRequest -Uri "https://m.facebook.com/119812241410296" -WebSession $session
+    $response = Invoke-WebRequest -Uri 'https://m.facebook.com/119812241410296' -WebSession $session
 
     Cookies found in the FireFox cookie database that match facebook are loaded into a WebSession and that websession is used to visit the Facebook PowerShell page.
 .PARAMETER Browser

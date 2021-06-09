@@ -88,7 +88,7 @@ Enter-Build {
     $script:coverageThreshold = 53
 
     [version]$script:PesterVersion = '5.0.0'
-}#Enter-Build
+} #Enter-Build
 
 # Define headers as separator, task path, synopsis, and location, e.g. for Ctrl+Click in VSCode.
 # Also change the default color to Green. If you need task start times, use `$Task.Started`.
@@ -102,7 +102,7 @@ Set-BuildHeader {
     Write-Build DarkGray "At $($Task.InvocationInfo.ScriptName):$($Task.InvocationInfo.ScriptLineNumber)"
     Write-Build Yellow "Manifest File: $script:ModuleManifestFile"
     Write-Build Yellow "Manifest Version: $($manifestInfo.ModuleVersion)"
-}#Set-BuildHeader
+} #Set-BuildHeader
 
 # Define footers similar to default but change the color to DarkGray.
 Set-BuildFooter {
@@ -110,7 +110,7 @@ Set-BuildFooter {
     Write-Build DarkGray "Done $Path, $($Task.Elapsed)"
     # # separator line
     # Write-Build Gray ('=' * 79)
-}#Set-BuildFooter
+} #Set-BuildFooter
 
 #Synopsis: Validate system requirements are met
 Add-BuildTask ValidateRequirements {
@@ -118,7 +118,7 @@ Add-BuildTask ValidateRequirements {
     Write-Build White "      Verifying at least PowerShell $script:requiredPSVersion..."
     Assert-Build ($PSVersionTable.PSVersion.Major.ToString() -ge $script:requiredPSVersion) "At least Powershell $script:requiredPSVersion is required for this build to function properly"
     Write-Build Green '      ...Verification Complete!'
-}#ValidateRequirements
+} #ValidateRequirements
 
 # Synopsis: Import the current module manifest file for processing
 Add-BuildTask TestModuleManifest -Before ImportModuleManifest {
@@ -150,7 +150,7 @@ Add-BuildTask Clean {
     $null = New-Item $script:ArchivePath -ItemType:Directory
 
     Write-Build Green '      ...Clean Complete!'
-}#Clean
+} #Clean
 
 #Synopsis: Invokes PSScriptAnalyzer against the Module source path
 Add-BuildTask Analyze {
@@ -172,7 +172,7 @@ Add-BuildTask Analyze {
     else {
         Write-Build Green '      ...Module Analyze Complete!'
     }
-}#Analyze
+} #Analyze
 
 #Synopsis: Invokes Script Analyzer against the Tests path if it exists
 Add-BuildTask AnalyzeTests -After Analyze {
@@ -197,7 +197,7 @@ Add-BuildTask AnalyzeTests -After Analyze {
             Write-Build Green '      ...Test Analyze Complete!'
         }
     }
-}#AnalyzeTests
+} #AnalyzeTests
 
 #Synopsis: Analyze scripts to verify if they adhere to desired coding format (Stroustrup / OTBS / Allman)
 Add-BuildTask FormattingCheck {
@@ -221,7 +221,7 @@ Add-BuildTask FormattingCheck {
     else {
         Write-Build Green '      ...Formatting Analyze Complete!'
     }
-}#FormattingCheck
+} #FormattingCheck
 
 #Synopsis: Invokes all Pester Unit Tests in the Tests\Unit folder (if it exists)
 Add-BuildTask Test {
@@ -293,7 +293,7 @@ Add-BuildTask Test {
         }
 
     }
-}#Test
+} #Test
 
 #Synopsis: Used primarily during active development to generate xml file to graphically display code coverage in VSCode using Coverage Gutters
 Add-BuildTask DevCC {
@@ -310,7 +310,7 @@ Add-BuildTask DevCC {
 
     Invoke-Pester -Configuration $pesterConfiguration
     Write-Build Green '      ...Code Coverage report generated!'
-}#DevCC
+} #DevCC
 
 # Synopsis: Build help for module
 Add-BuildTask CreateHelpStart {
@@ -319,7 +319,7 @@ Add-BuildTask CreateHelpStart {
     Write-Build Gray '           Importing platyPS v0.12.0 ...'
     Import-Module platyPS -RequiredVersion 0.12.0 -ErrorAction Stop
     Write-Build Gray '           ...platyPS imported successfully.'
-}#CreateHelpStart
+} #CreateHelpStart
 
 # Synopsis: Build markdown help files for module and fail if help information is missing
 Add-BuildTask CreateMarkdownHelp -After CreateHelpStart {
@@ -397,18 +397,18 @@ Add-BuildTask CreateMarkdownHelp -After CreateHelpStart {
     }
 
     Write-Build Gray '           ...Markdown generation complete.'
-}#CreateMarkdownHelp
+} #CreateMarkdownHelp
 
 # Synopsis: Build the external xml help file from markdown help files with PlatyPS
 Add-BuildTask CreateExternalHelp -After CreateMarkdownHelp {
     Write-Build Gray '           Creating external xml help file...'
     $null = New-ExternalHelp "$script:ArtifactsPath\docs" -OutputPath "$script:ArtifactsPath\en-US\" -Force
     Write-Build Gray '           ...External xml help file created!'
-}#CreateExternalHelp
+} #CreateExternalHelp
 
 Add-BuildTask CreateHelpComplete -After CreateExternalHelp {
     Write-Build Green '      ...CreateHelp Complete!'
-}#CreateHelpStart
+} #CreateHelpStart
 
 # Synopsis: Replace comment based help (CBH) with external help in all public functions for this project
 Add-BuildTask UpdateCBH -After AssetCopy {
@@ -425,14 +425,14 @@ Add-BuildTask UpdateCBH -After AssetCopy {
         $UpdatedFile = (Get-Content  $FormattedOutFile -raw) -replace $CBHPattern, $ExternalHelp
         $UpdatedFile | Out-File -FilePath $FormattedOutFile -force -Encoding:utf8
     }
-}#UpdateCBH
+} #UpdateCBH
 
 # Synopsis: Copies module assets to Artifacts folder
 Add-BuildTask AssetCopy -Before Build {
     Write-Build Gray '        Copying assets to Artifacts...'
     Copy-Item -Path "$script:ModuleSourcePath\*" -Destination $script:ArtifactsPath -Exclude *.psd1, *.psm1 -Recurse -ErrorAction Stop
     Write-Build Gray '        ...Assets copy complete.'
-}#AssetCopy
+} #AssetCopy
 
 # Synopsis: Builds the Module to the Artifacts folder
 Add-BuildTask Build {
@@ -480,7 +480,7 @@ Add-BuildTask Build {
     }
 
     Write-Build Green '      ...Build Complete!'
-}#Build
+} #Build
 
 #Synopsis: Invokes all Pester Infrastructure Tests in the Tests\Infrastructure folder (if it exists)
 Add-BuildTask InfraTest {
@@ -511,7 +511,7 @@ Add-BuildTask InfraTest {
         Assert-Build($numberFails -eq 0) ('Failed "{0}" unit tests.' -f $numberFails)
         Write-Build Green '      ...Pester Infrastructure Tests Complete!'
     }
-}#InfraTest
+} #InfraTest
 
 #Synopsis: Creates an archive of the built Module
 Add-BuildTask Archive {
@@ -533,4 +533,4 @@ Add-BuildTask Archive {
     [System.IO.Compression.ZipFile]::CreateFromDirectory($script:ArtifactsPath, $zipFile)
 
     Write-Build Green '        ...Archive Complete!'
-}#Archive
+} #Archive

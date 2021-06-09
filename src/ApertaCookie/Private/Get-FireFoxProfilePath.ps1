@@ -36,7 +36,7 @@ function Get-FireFoxProfilePath {
             Path        = $Path
             ErrorAction = 'Stop'
         }
-        $recentProfile = Get-ChildItem @itemSplat | Where-Object { $_.PSIsContainer -and $_.Name -match "\.default" } | Sort-Object LastWriteTime -Descending | Select-Object -First 1
+        $recentProfile = Get-ChildItem @itemSplat | Where-Object { $_.PSIsContainer -and $_.Name -match '\.default' } | Sort-Object LastWriteTime -Descending | Select-Object -First 1
         Write-Verbose $recentProfile
     }
     catch {

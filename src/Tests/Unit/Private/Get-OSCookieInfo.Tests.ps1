@@ -78,8 +78,6 @@ InModuleScope $ModuleName {
                     $eval.TableName | Should -BeExactly 'moz_cookies'
                 } #it
             } #context_windows
-        }#context_Success
-    }#describe_PrivateFunctions
+        } #context_Success
+    } #describe_PrivateFunctions
 }
-
-

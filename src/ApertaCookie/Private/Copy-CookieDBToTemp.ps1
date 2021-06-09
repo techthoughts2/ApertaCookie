@@ -32,7 +32,7 @@ function Copy-CookieDBToTemp {
     )
 
     $tempDir = [System.IO.Path]::GetTempPath()
-    $tempPath = $tempDir + "apertacookie"
+    $tempPath = $tempDir + 'apertacookie'
     Write-Verbose -Message ('Evaluating temp location: {0}' -f $tempPath)
 
     if (-not(Test-Path -Path $tempPath)) {

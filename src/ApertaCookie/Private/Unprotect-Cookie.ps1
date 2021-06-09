@@ -15,6 +15,8 @@
     Author: Jake Morrison - @jakemorrison - https://www.techthoughts.info/
     Use GCM decrytpion if ciphertext starts "V10" & GCMKey exists, else try ProtectedData.unprotect
     Requires Get-CookieDecryptKey to have already been run to load $Script:GCMKey
+    Some of this code was inspired from Read-Chromium by James O'Neill:
+        https://www.powershellgallery.com/packages/Read-Chromium/1.0.0/Content/Read-Chromium.ps1
 .COMPONENT
     ApertaCookie
 #>

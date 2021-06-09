@@ -67,6 +67,6 @@ InModuleScope $ModuleName {
         # Context 'Success' {
         # Doesn't seem to be a good way to be able to mock the sqlite connections
         # the close() and dispose() don't work correctly
-        # }#context_Success
-    }#describe_PrivateFunctions
+        # } #context_Success
+    } #describe_PrivateFunctions
 }

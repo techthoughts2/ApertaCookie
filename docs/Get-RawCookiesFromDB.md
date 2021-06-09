@@ -28,14 +28,14 @@ If a domain is specified a query is run to return cookies that match that domain
 Get-RawCookiesFromDB -Browser Edge
 ```
 
-Returns all cookies in the Edge SQLLite database
+Returns all cookies in the Edge SQLite database
 
 ### EXAMPLE 2
 ```
 Get-RawCookiesFromDB -Browser Edge -Domain 'twitter'
 ```
 
-Returns all cookies in the Edge SQLLite database that are like domain twitter
+Returns all cookies in the Edge SQLite database that are like domain twitter
 
 ## PARAMETERS
 

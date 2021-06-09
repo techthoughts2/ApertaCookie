@@ -6,7 +6,7 @@
 .EXAMPLE
     Get-OSCookieInfo -Browser 'Chrome'
 
-    Returns SQLLite Cookie Database path for OS that function is run on as well as SQLite Table Name
+    Returns SQLite Cookie Database path for OS that function is run on as well as SQLite Table Name
 .PARAMETER Browser
     Browser choice
 .OUTPUTS
