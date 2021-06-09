@@ -55,6 +55,6 @@ function Unprotect-Cookie {
         }
     }
     catch {
-        Write-Error $_
+        Write-Warning $_
     }
 } #Unprotect-Cookie
