@@ -1,6 +1,4 @@
-﻿using namespace "System.Security.Cryptography"
-
-<#
+﻿<#
 .SYNOPSIS
     Creates System.Security.Cryptography.AesGcm with provided key byte
 .DESCRIPTION
