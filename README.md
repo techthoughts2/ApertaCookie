@@ -17,7 +17,7 @@ ApertaCookie is a PowerShell module that can extract and decrypt cookie data fro
 
 ## Description
 
-ApertaCookie enables you quickly extract the cookies from a browser's SQLite database using PowerShell.
+ApertaCookie enables you to quickly extract the cookies from a browser's SQLite database using PowerShell.
 
 Edge, Chrome, and Firefox are currently supported across Windows, Linux, and MacOS for retrieving raw cookie information. With the exception of Firefox, cookie values are encrypted. Cookie value decryption is currently supported on Windows OS.
 
@@ -69,7 +69,7 @@ $allChromeCookies = Get-RawCookiesFromDB -Browser Chrome
 # get decrypted cookie information from edge
 $edgeCookies = Get-DecryptedCookiesInfo -Browser Edge
 #------------------------------------------------------------------------------------------------
-# get decrypted cookie information from chrome for a specific domain
+# get decrypted cookie information from edge for a specific domain
 $edgeCookies = Get-DecryptedCookiesInfo -Browser Edge -Domain facebook
 #------------------------------------------------------------------------------------------------
 # get decrypted cookie infromation from firefox for the twitter domain and load into a web session
@@ -83,7 +83,7 @@ Convert-CookieTime -CookieTime 1616989552356002 -FirefoxTime
 
 ## Author
 
-[Jake Morrison](https://twitter.com/JakeMorrison) - [https://techthoughts.info/](https://techthoughts.info/)
+[Jake Morrison](https://twitter.com/JakeMorrison) - [https://www.techthoughts.info/](https://www.techthoughts.info/)
 
 ## Notes
 
