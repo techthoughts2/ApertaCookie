@@ -13,7 +13,7 @@ Enhancements | [![ApertaCookie-Windows-pwsh-Build-Enhancements](https://github.c
 
 ## Synopsis
 
-ApertaCookie is a PowerShell module that can extract and decrypt cookie data from the SQLite files of several popular browsers.
+ApertaCookie is a PowerShell module that can extract and decrypt cookie data from the SQLite databases of several popular browsers.
 
 ## Description
 
