@@ -32,11 +32,11 @@ function Get-OSCookieInfo {
         Write-Verbose -Message 'Windows Detected'
         switch ($Browser) {
             Edge {
-                $sqlPath = "$env:LOCALAPPDATA\Microsoft\Edge\User Data\Default\Cookies"
+                $sqlPath = "$env:LOCALAPPDATA\Microsoft\Edge\User Data\Default\Network\Cookies"
                 $tableName = 'cookies'
             }
             Chrome {
-                $sqlPath = "$env:LOCALAPPDATA\Google\Chrome\User Data\Default\Cookies"
+                $sqlPath = "$env:LOCALAPPDATA\Google\Chrome\User Data\Default\Network\Cookies"
                 $tableName = 'cookies'
             }
             FireFox {
