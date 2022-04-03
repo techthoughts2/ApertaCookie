@@ -1,4 +1,4 @@
-# ApertaCookie
+# ApertaCookie - ARCHIVED
 
 [![Minimum Supported PowerShell Version](https://img.shields.io/badge/PowerShell-7.0+-black.svg)](https://github.com/PowerShell/PowerShell) [![PowerShell Gallery][psgallery-img]][psgallery-site] ![Cross Platform](https://img.shields.io/badge/platform-windows%20%7C%20macos%20%7C%20linux-orange) [![License][license-badge]](LICENSE)
 
@@ -10,6 +10,15 @@ Branch | Windows | Linux | MacOS
 --- | --- | --- | --- |
 main | [![ApertaCookie-Windows-pwsh-Build-main](https://github.com/techthoughts2/ApertaCookie/actions/workflows/wf_Windows_Core.yml/badge.svg?branch=main)](https://github.com/techthoughts2/ApertaCookie/actions/workflows/wf_Windows_Core.yml) | [![ApertaCookie-Linux-Build-main](https://github.com/techthoughts2/ApertaCookie/actions/workflows/wf_Linux.yml/badge.svg?branch=main)](https://github.com/techthoughts2/ApertaCookie/actions/workflows/wf_Linux.yml) | [![ApertaCookie-MacOS-Build-main](https://github.com/techthoughts2/ApertaCookie/actions/workflows/wf_MacOS.yml/badge.svg?branch=main)](https://github.com/techthoughts2/ApertaCookie/actions/workflows/wf_MacOS.yml)
 Enhancements | [![ApertaCookie-Windows-pwsh-Build-Enhancements](https://github.com/techthoughts2/ApertaCookie/actions/workflows/wf_Windows_Core.yml/badge.svg?branch=Enhancements)](https://github.com/techthoughts2/ApertaCookie/actions/workflows/wf_Windows_Core.yml) | [![ApertaCookie-Linux-Build-Enhancements](https://github.com/techthoughts2/ApertaCookie/actions/workflows/wf_Linux.yml/badge.svg?branch=Enhancements)](https://github.com/techthoughts2/ApertaCookie/actions/workflows/wf_Linux.yml) | [![ApertaCookie-MacOS-Build-Enhancements](https://github.com/techthoughts2/ApertaCookie/actions/workflows/wf_MacOS.yml/badge.svg?branch=Enhancements)](https://github.com/techthoughts2/ApertaCookie/actions/workflows/wf_MacOS.yml)
+
+:no_entry: **This project is no longer actively maintained** :no_entry:
+
+*04/03/2022* - I have decided to archive this project. The module is also now unlisted on the PSGallery. Primary reasons:
+
+1. I lack the necessary .NET skill set for making this module truly cross-platform. A firm understanding of ```System.Security.Cryptography``` in .NET Core is necessary to achieve this.
+1. It is extremely challenging to keep pace with browser changes and the way they store and interact with cookies. This module breaks constantly as a result.
+
+If you are interested in picking up this project, feel free to reach out to me [on Twitter](https://twitter.com/JakeMorrison).
 
 ## Synopsis
 
